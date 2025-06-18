@@ -23,11 +23,12 @@ func _on_anim_end(anim_name: StringName) -> void:
 
 func _on_domino_area_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if not already_tipped:
-		var other_domino = area.get_parent().get_parent().get_parent()
-		var other_rigid: RigidBody3D = area.get_parent()
-		var other_player: AnimationPlayer = other_domino.find_child("AnimationPlayer")
-		print(name, "tipped over by ", other_domino.name)
-		$AnimationPlayer.play("tip_over")
-		other_player.pause()
-		#other_rigid.gravity_scale = 1
-		already_tipped = true
+		if area is Collidable and (area as Collidable).collidableType == Collidable.CollidableType.DOMINO:
+			var other_domino = area.get_parent().get_parent().get_parent()
+			var other_rigid: RigidBody3D = area.get_parent()
+			var other_player: AnimationPlayer = other_domino.find_child("AnimationPlayer")
+			print(name, "tipped over by ", other_domino.name)
+			$AnimationPlayer.play("tip_over")
+			other_player.pause()
+			#other_rigid.gravity_scale = 1
+			already_tipped = true

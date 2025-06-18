@@ -15,8 +15,8 @@ func add_domino(pos: Vector3) -> void:
 	var x = dom.instantiate()
 	x.owner  = $"."
 	print(how_many_dominoes())
-	add_child(x, true)
 	x.position = pos
+	print(x.is_in_group("dominoes"))
 	print(how_many_dominoes())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
