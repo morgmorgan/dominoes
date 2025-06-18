@@ -1,3 +1,4 @@
+class_name Domino
 extends Node3D
 
 @export var start_domino:bool = false
