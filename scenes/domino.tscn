@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bwl781ba7ljj3"]
+[gd_scene load_steps=10 format=4 uid="uid://bwl781ba7ljj3"]
 
 [ext_resource type="Script" path="res://scripts/domino.gd" id="1_j5684"]
+[ext_resource type="Script" path="res://scripts/collidableType.gd" id="2_eeeqh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sdo0x"]
 size = Vector3(1.1991, 4.1848, 1.9165)
@@ -49,7 +50,7 @@ shadow_mesh = SubResource("ArrayMesh_l7sf3")
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("physisc:rotation")
+tracks/0/path = NodePath("physics:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +65,7 @@ resource_name = "tip_over"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("physisc:rotation")
+tracks/0/path = NodePath("physics:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,29 +81,31 @@ _data = {
 "tip_over": SubResource("Animation_r54d8")
 }
 
-[node name="domino" type="Node3D"]
+[node name="domino" type="Node3D" groups=["dominoes"]]
 script = ExtResource("1_j5684")
 metadata/_edit_group_ = true
 
-[node name="physisc" type="Node3D" parent="."]
+[node name="physics" type="Node3D" parent="."]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="physisc"]
+[node name="RigidBody3D" type="RigidBody3D" parent="physics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159488, 1.01688, 0)
 gravity_scale = 0.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="physisc/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496507, 0.998562, 0)
 shape = SubResource("BoxShape3D_sdo0x")
 
-[node name="Cube" type="MeshInstance3D" parent="physisc/RigidBody3D"]
+[node name="Cube" type="MeshInstance3D" parent="physics/RigidBody3D"]
 mesh = SubResource("ArrayMesh_i3vjb")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="physisc/RigidBody3D"]
+[node name="Area3D" type="Area3D" parent="physics/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496507, 0.998562, 0)
+script = ExtResource("2_eeeqh")
+collidableType = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="physisc/RigidBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D/Area3D"]
 shape = SubResource("BoxShape3D_sdo0x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -110,5 +113,5 @@ libraries = {
 "": SubResource("AnimationLibrary_cumg4")
 }
 
-[connection signal="area_shape_entered" from="physisc/RigidBody3D/Area3D" to="." method="_on_domino_area_entered"]
+[connection signal="area_shape_entered" from="physics/RigidBody3D/Area3D" to="." method="_on_domino_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_end"]
