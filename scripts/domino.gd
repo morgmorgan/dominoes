@@ -20,8 +20,8 @@ func _on_anim_end(anim_name: StringName) -> void:
 	#if anim_name == "tip_over":
 		#print("tip over ended for ", name)
 		#$physisc/RigidBody3D.gravity_scale = 1
-	
-func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
+
+func _on_domino_area_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if not already_tipped:
 		var other_domino = area.get_parent().get_parent().get_parent()
 		var other_rigid: RigidBody3D = area.get_parent()

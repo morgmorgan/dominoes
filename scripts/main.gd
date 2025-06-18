@@ -24,10 +24,9 @@ func _process(delta: float) -> void:
 	
 	pass
 
-func _on_rigid_body_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_floor_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		var mouse_action : InputEventMouseButton = event
 		if mouse_action.button_index == 1 and mouse_action.pressed == true:
 			add_domino(event_position)
 		print(event, event_position)
-	pass # Replace with function body.
