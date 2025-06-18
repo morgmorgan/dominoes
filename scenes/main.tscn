@@ -34,3 +34,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25299, -0.943349, 0)
 
 [node name="domino4" parent="." instance=ExtResource("2_xighj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4491, -0.943349, 0)
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
