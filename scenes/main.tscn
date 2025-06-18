@@ -1,104 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://drigcgcpl6n0r"]
+[gd_scene load_steps=4 format=3 uid="uid://drigcgcpl6n0r"]
 
-[ext_resource type="ArrayMesh" uid="uid://brhp21jmr076n" path="res://assets/roundedcube.obj" id="1_81x5s"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
+[ext_resource type="PackedScene" uid="uid://bwl781ba7ljj3" path="res://scenes/domino.tscn" id="2_xighj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n667v"]
+size = Vector3(24, 1, 11.241)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_jay6m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.494939, 0.540457, -0.680398, -0.0356996, 0.795018, 0.605534, 0.868194, -0.275412, 0.41278, -6.63411, 8.5224, 10.6917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76457, 4.34203, 10.6917)
 current = true
 
-[node name="Roundedcube" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_81x5s")
+[node name="domino" parent="." instance=ExtResource("2_xighj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.943349, 0)
+start_domino = true
 
-[node name="Roundedcube2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.15199)
-mesh = ExtResource("1_81x5s")
+[node name="domino2" parent="." instance=ExtResource("2_xighj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22936, -0.943349, 0)
 
-[node name="Roundedcube3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 0)
-mesh = ExtResource("1_81x5s")
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159488, -1.01521, 0)
+gravity_scale = 0.0
+freeze = true
+metadata/_edit_group_ = true
 
-[node name="Roundedcube4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 2.15199)
-mesh = ExtResource("1_81x5s")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_n667v")
 
-[node name="Roundedcube5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 0)
-mesh = ExtResource("1_81x5s")
+[node name="domino3" parent="." instance=ExtResource("2_xighj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25299, -0.943349, 0)
 
-[node name="Roundedcube6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 2.15199)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 0)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 2.15199)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube9" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.30919)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube10" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.46118)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube11" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 4.30919)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube12" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 6.46118)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube13" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 4.30919)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube14" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 6.46118)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube15" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 4.30919)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube16" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 6.46118)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube17" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.53526)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube18" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.6873)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube19" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 8.53526)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube20" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15494, 0, 10.6873)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube21" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 8.53526)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube22" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34961, 0, 10.6873)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube23" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 8.53526)
-mesh = ExtResource("1_81x5s")
-
-[node name="Roundedcube24" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.50455, 0, 10.6873)
-mesh = ExtResource("1_81x5s")
+[node name="domino4" parent="." instance=ExtResource("2_xighj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4491, -0.943349, 0)
