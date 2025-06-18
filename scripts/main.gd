@@ -21,6 +21,7 @@ func add_domino() -> void:
 	add_child(x, true)
 	print(how_many_dominoes())
 
+
 func _process(delta: float) -> void:
 	
 	pass

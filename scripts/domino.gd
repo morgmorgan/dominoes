@@ -30,7 +30,4 @@ func _on_area_3d_area_shape_entered(area_rid: RID, area: Area3D, area_shape_inde
 		$AnimationPlayer.play("tip_over")
 		other_player.pause()
 		#other_rigid.gravity_scale = 1
-		
-		
-		
 		already_tipped = true
