@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt6guho71drxc"]
+
+[ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="1_kxleh"]
+[ext_resource type="PackedScene" uid="uid://b81mb48fi5tto" path="res://scenes/button_alone.tscn" id="2_axgl1"]
+
+[node name="button_tile" type="Node3D"]
+
+[node name="nice_rounded_cube" parent="." instance=ExtResource("1_kxleh")]
+transform = Transform3D(1.714, 0, 0, 0, 1.714, 0, 0, 0, 1.714, 0, 0, 0)
+
+[node name="button" parent="." instance=ExtResource("2_axgl1")]

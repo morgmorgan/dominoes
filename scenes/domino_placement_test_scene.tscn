@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgxnbiy7nujty"]
+
+[ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="1_ms8gh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n1f1c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_la40o"]
+sky_material = SubResource("ProceduralSkyMaterial_n1f1c")
+
+[sub_resource type="Environment" id="Environment_esmac"]
+background_mode = 2
+sky = SubResource("Sky_la40o")
+tonemap_mode = 2
+
+[node name="dominoPlacementTestScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_esmac")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
+
+[node name="grid" type="Node" parent="."]
+
+[node name="gridTile" parent="grid" instance=ExtResource("1_ms8gh")]
+start_domino = true

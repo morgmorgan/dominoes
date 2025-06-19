@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://b81mb48fi5tto"]
+
+[ext_resource type="PackedScene" uid="uid://c4aucslm5367l" path="res://assets/button.glb" id="1_c8xdb"]
+[ext_resource type="Script" path="res://button.gd" id="2_ec3tw"]
+[ext_resource type="Material" uid="uid://cqj8nod67cy46" path="res://resources/gridtile_rightClicked.tres" id="3_q8jrg"]
+
+[sub_resource type="Animation" id="Animation_8aqdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.448167, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uycpq"]
+resource_name = "button_pressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.448167, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce6hb"]
+_data = {
+"RESET": SubResource("Animation_8aqdg"),
+"button_pressed": SubResource("Animation_uycpq")
+}
+
+[node name="button" instance=ExtResource("1_c8xdb")]
+script = ExtResource("2_ec3tw")
+
+[node name="Cylinder_001" parent="." index="1"]
+transform = Transform3D(0.919244, 0, 0, 0, -0.919244, -8.03629e-08, 0, 8.03629e-08, -0.919244, 0, 0.448167, 0)
+surface_material_override/0 = ExtResource("3_q8jrg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_ce6hb")
+}
