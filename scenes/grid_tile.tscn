@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://85lwlniaq13c"]
+[gd_scene load_steps=12 format=3 uid="uid://cuskqxdcolbu8"]
 
 [ext_resource type="Script" path="res://scripts/grid_tile.gd" id="1_6tc4f"]
 [ext_resource type="Material" uid="uid://daajbgq0s2uek" path="res://resources/gridtile_hilight.tres" id="2_e3w5n"]
