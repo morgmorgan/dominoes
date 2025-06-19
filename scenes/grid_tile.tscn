@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuskqxdcolbu8"]
+[gd_scene load_steps=13 format=3 uid="uid://cuskqxdcolbu8"]
 
 [ext_resource type="Script" path="res://scripts/grid_tile.gd" id="1_6tc4f"]
 [ext_resource type="Material" uid="uid://daajbgq0s2uek" path="res://resources/gridtile_hilight.tres" id="2_e3w5n"]
 [ext_resource type="Material" uid="uid://b3s7bnt8ay6of" path="res://resources/gridtile_normal.tres" id="3_afc73"]
 [ext_resource type="Material" uid="uid://cfs8m7vjqcqnx" path="res://resources/gridtile_clicked.tres" id="4_it3os"]
 [ext_resource type="Material" uid="uid://cqj8nod67cy46" path="res://resources/gridtile_rightClicked.tres" id="5_xwty1"]
+[ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="6_7mylv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n8gdt"]
-size = Vector2(5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_srxyy"]
 size = Vector3(5, 0, 5)
@@ -74,6 +74,7 @@ script = ExtResource("1_6tc4f")
 [node name="tileModel" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="tileModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0527782, 0)
 mesh = SubResource("PlaneMesh_n8gdt")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_afc73")
@@ -91,3 +92,5 @@ shape = SubResource("BoxShape3D_srxyy")
 libraries = {
 "": SubResource("AnimationLibrary_n7sy4")
 }
+
+[node name="nice_rounded_cube" parent="." instance=ExtResource("6_7mylv")]
