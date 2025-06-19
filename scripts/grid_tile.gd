@@ -1,10 +1,10 @@
 class_name gridTile extends Node3D
 
 const GRIDTILE_SCENE : PackedScene = preload("res://scenes/grid_tile.tscn")
+const GHOST_DOMINO_SCENE : PackedScene = preload("res://scenes/ghost_domino_basic.tscn")
 const DOMINO_SCENE : PackedScene = preload("res://scenes/domino.tscn")
 const HIGHLIGHT_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_hilight.tres")
 const NORMAL_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_normal.tres")
-const ANGLE_INCREMENT = 15
 
 @export var tile_id : String = "tile0"
 @export var current_domino : Domino = null
@@ -13,8 +13,7 @@ const ANGLE_INCREMENT = 15
 @onready var tile_gfx : MeshInstance3D = $tileModel/MeshInstance3D
 @export var start_domino:bool = false
 
-var spawn_angle = 0
-var mouse_active = false
+var ghost : Node3D = null
 
 # Static Constructor for spawning via code
 static func new_gridTile(tile_id : String, current)-> gridTile:
@@ -32,20 +31,11 @@ func _ready():
 	
 func on_mouseover():
 	tile_gfx.set_surface_override_material(0, HIGHLIGHT_MATERIAL)
-	mouse_active = true
+	show_ghost()
 	
 func on_mouse_off():
 	tile_gfx.set_surface_override_material(0, NORMAL_MATERIAL)
-	mouse_active = false
-	
-func _process(delta: float) -> void:
-	if mouse_active:
-		if Input.is_action_just_pressed("MouseWheelUp"):
-			spawn_angle += ANGLE_INCREMENT
-			print(spawn_angle)
-		if Input.is_action_just_pressed("MouseWheelDown"):
-			spawn_angle -= ANGLE_INCREMENT
-			print(spawn_angle)
+	remove_ghost()
 	
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if Input.is_action_just_pressed("LeftMouseClick"):
@@ -60,7 +50,7 @@ func spawn_domino(start_domino: bool):
 		return
 	var new_domino : Domino = DOMINO_SCENE.instantiate()
 	new_domino.start_domino = start_domino
-	new_domino.rotation_degrees = Vector3(0, spawn_angle, 0)
+	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_domino.position = spawn_point
 	current_domino = new_domino
 	add_child(current_domino, true)
@@ -70,3 +60,20 @@ func remove_domino():
 		return
 	remove_child(current_domino)
 	current_domino = null
+	
+func remove_ghost():
+	if ghost != null:
+		remove_child(ghost)
+		ghost = null
+
+func show_ghost():
+	if current_domino != null:
+		return
+	
+	remove_ghost()
+	
+	var new_ghost : Node3D = GHOST_DOMINO_SCENE.instantiate()
+	new_ghost.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
+	new_ghost.position = spawn_point
+	ghost = new_ghost
+	add_child(new_ghost, true)

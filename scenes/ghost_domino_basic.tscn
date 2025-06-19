@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7v14h4p38078"]
+
+[ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="1_48i06"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7815"]
+transparency = 1
+albedo_color = Color(0.215686, 1, 1, 0.188235)
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 18.5
+
+[node name="ghostDominoBasic" instance=ExtResource("1_48i06")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d7815")
