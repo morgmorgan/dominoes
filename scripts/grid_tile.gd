@@ -12,8 +12,11 @@ const NORMAL_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_n
 @onready var spawn_point : Vector3 = $dominoSpawnPoint.position
 @onready var tile_gfx : MeshInstance3D = $tileModel/MeshInstance3D
 @export var start_domino:bool = false
+@export var locked_domino = false
+@export var spawn_angle = 0
 
 var ghost : Node3D = null
+var mouse_active = false
 
 # Static Constructor for spawning via code
 static func new_gridTile(tile_id : String, current)-> gridTile:
@@ -22,8 +25,8 @@ static func new_gridTile(tile_id : String, current)-> gridTile:
 	return new_tile
 
 func _ready():
-	if start_domino:
-		spawn_domino(true)
+	if start_domino or locked_domino:
+		spawn_domino(start_domino, spawn_angle)
 	else:
 		%mouseArea.mouse_entered.connect(on_mouseover)
 		%mouseArea.mouse_exited.connect(on_mouse_off)
@@ -40,12 +43,12 @@ func on_mouse_off():
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if Input.is_action_just_pressed("LeftMouseClick"):
 		$AnimationPlayer.play("clicked")
-		spawn_domino(false)
+		spawn_domino(false, spawn_angle)
 	if Input.is_action_just_pressed("RightMouseClick"):
 		$AnimationPlayer.play("rightClicked")
 		remove_domino()
 		
-func spawn_domino(start_domino: bool):
+func spawn_domino(start_domino: bool, spawn_angle: float):
 	if current_domino != null:
 		return
 	var new_domino : Domino = DOMINO_SCENE.instantiate()

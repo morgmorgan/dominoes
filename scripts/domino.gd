@@ -35,7 +35,7 @@ func _on_domino_area_entered(area_rid: RID, area: Area3D, area_shape_index: int,
 		if area is Collidable and (area as Collidable).get_collidable_type() == Collidable.CollidableType.DOMINO:
 			var collidable = area as DominoCollidable
 			var other_domino = collidable.get_collidable_parent_node()
-			var other_rigid: RigidBody3D = area.get_parent()
+			var other_rigid: RigidBody3D = other_domino.find_child("RigidBody3D", true)
 			var other_player: AnimationPlayer = other_domino.find_child("AnimationPlayer")
 			print(name, " tipped over by ", other_domino.name)
 			tip_domino()
