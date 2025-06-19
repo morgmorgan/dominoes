@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="6_7mylv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n8gdt"]
+size = Vector2(1.75, 1.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_srxyy"]
 size = Vector3(5, 0, 5)
@@ -80,7 +81,6 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_afc73")
 
 [node name="dominoSpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="mouseArea" type="Area3D" parent="."]
 unique_name_in_owner = true

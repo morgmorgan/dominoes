@@ -32,31 +32,24 @@ current = true
 [node name="grid" type="Node" parent="."]
 
 [node name="gridTile" parent="grid" instance=ExtResource("2_454y7")]
-start_domino = true
 
 [node name="gridTile2" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-start_domino = true
 
 [node name="gridTile3" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-start_domino = true
 
 [node name="gridTile4" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-start_domino = true
 
 [node name="gridTile5" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-start_domino = true
 
 [node name="gridTile6" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-start_domino = true
 
 [node name="gridTile7" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-start_domino = true
 
 [node name="gridTile8" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
@@ -64,52 +57,39 @@ start_domino = true
 
 [node name="gridTile9" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-start_domino = true
 
 [node name="gridTile10" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
-start_domino = true
 
 [node name="gridTile11" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
-start_domino = true
 
 [node name="gridTile12" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
-start_domino = true
 
 [node name="gridTile13" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
-start_domino = true
 
 [node name="gridTile14" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
-start_domino = true
 
 [node name="gridTile15" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-start_domino = true
 
 [node name="gridTile16" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-start_domino = true
 
 [node name="gridTile17" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-start_domino = true
 
 [node name="gridTile18" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
-start_domino = true
 
 [node name="gridTile19" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
-start_domino = true
 
 [node name="gridTile20" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
-start_domino = true
 
 [node name="gridTile21" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
-start_domino = true
