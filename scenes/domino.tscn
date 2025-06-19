@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwl781ba7ljj3"]
 
 [ext_resource type="Script" path="res://scripts/domino.gd" id="1_j5684"]
-[ext_resource type="Script" path="res://scripts/collidableType.gd" id="2_eeeqh"]
+[ext_resource type="Script" path="res://scripts/collidable_domino.gd" id="2_a8nhh"]
 [ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="3_q8o4t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sdo0x"]
@@ -59,8 +59,7 @@ shape = SubResource("BoxShape3D_sdo0x")
 
 [node name="Area3D" type="Area3D" parent="physics/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("2_eeeqh")
-collidableType = 1
+script = ExtResource("2_a8nhh")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D/Area3D"]

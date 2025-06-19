@@ -7,7 +7,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("RightMouseClick"):
+	if Input.is_action_just_pressed("MouseWheelClick"):
 		for domino: Domino in get_tree().get_nodes_in_group("dominoes"):
 			if domino.start_domino:
 				domino.tip_domino()

@@ -2,6 +2,10 @@ class_name Domino
 extends Node3D
 
 @export var start_domino:bool = false
+@export var type: DominoType = DominoType.GENERIC
+
+enum DominoType {GENERIC, HEAVY}
+
 var already_tipped = false
 
 # Called when the node enters the scene tree for the first time.
@@ -28,11 +32,12 @@ func tip_domino() -> void:
 
 func _on_domino_area_entered(area_rid: RID, area: Area3D, area_shape_index: int, local_shape_index: int) -> void:
 	if not already_tipped:
-		if area is Collidable and (area as Collidable).collidableType == Collidable.CollidableType.DOMINO:
-			var other_domino = area.get_parent().get_parent().get_parent()
+		if area is Collidable and (area as Collidable).get_collidable_type() == Collidable.CollidableType.DOMINO:
+			var collidable = area as DominoCollidable
+			var other_domino = collidable.get_collidable_parent_node()
 			var other_rigid: RigidBody3D = area.get_parent()
 			var other_player: AnimationPlayer = other_domino.find_child("AnimationPlayer")
-			print(name, "tipped over by ", other_domino.name)
+			print(name, " tipped over by ", other_domino.name)
 			tip_domino()
 			other_player.pause()
 			#other_rigid.gravity_scale = 1

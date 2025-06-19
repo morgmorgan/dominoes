@@ -9,7 +9,7 @@ const ANGLE_INCREMENT = 15
 @export var tile_id : String = "tile0"
 @export var current_domino : Domino = null
 
-@onready var domino_spawn_point : Vector3 = $dominoSpawnPoint.position
+@onready var spawn_point : Vector3 = $dominoSpawnPoint.position
 @onready var tile_gfx : MeshInstance3D = $tileModel/MeshInstance3D
 @export var start_domino:bool = false
 
@@ -61,7 +61,7 @@ func spawn_domino(start_domino: bool):
 	var new_domino : Domino = DOMINO_SCENE.instantiate()
 	new_domino.start_domino = start_domino
 	new_domino.rotation_degrees = Vector3(0, spawn_angle, 0)
-	new_domino.position = domino_spawn_point
+	new_domino.position = spawn_point
 	current_domino = new_domino
 	add_child(current_domino, true)
 	
