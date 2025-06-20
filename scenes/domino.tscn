@@ -87,6 +87,7 @@ metadata/_edit_group_ = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="physics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+input_ray_pickable = false
 gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D"]
@@ -95,6 +96,7 @@ shape = SubResource("BoxShape3D_sdo0x")
 
 [node name="Area3D" type="Area3D" parent="physics/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+input_ray_pickable = false
 script = ExtResource("2_a8nhh")
 metadata/_edit_group_ = true
 
