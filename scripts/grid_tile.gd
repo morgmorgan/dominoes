@@ -57,6 +57,7 @@ func spawn_domino(start_domino: bool, spawn_angle: float):
 	new_domino.position = spawn_point
 	current_domino = new_domino
 	add_child(current_domino, true)
+	%dominoPlaceSFX.play()
 	
 func remove_domino():
 	if current_domino == null:

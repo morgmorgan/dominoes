@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuskqxdcolbu8"]
+[gd_scene load_steps=14 format=3 uid="uid://cuskqxdcolbu8"]
 
 [ext_resource type="Script" path="res://scripts/grid_tile.gd" id="1_6tc4f"]
 [ext_resource type="Material" uid="uid://daajbgq0s2uek" path="res://resources/gridtile_hilight.tres" id="2_e3w5n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://cfs8m7vjqcqnx" path="res://resources/gridtile_clicked.tres" id="4_it3os"]
 [ext_resource type="Material" uid="uid://cqj8nod67cy46" path="res://resources/gridtile_rightClicked.tres" id="5_xwty1"]
 [ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="6_7mylv"]
+[ext_resource type="AudioStream" uid="uid://cor80jetkn0sx" path="res://assets/dieThrow2.ogg" id="7_o2eph"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n8gdt"]
 size = Vector2(3, 3)
@@ -95,3 +96,8 @@ shape = SubResource("BoxShape3D_srxyy")
 libraries = {
 "": SubResource("AnimationLibrary_n7sy4")
 }
+
+[node name="dominoPlaceSFX" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_o2eph")
+bus = &"DominoPlace"
