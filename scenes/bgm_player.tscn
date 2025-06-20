@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c06nhtfpmsuv2"]
+
+[ext_resource type="AudioStream" uid="uid://dma82vxcr04vs" path="res://assets/Club Penguin - Pizza Parlor Theme (Charlie's Here).mp3" id="1_a6tu7"]
+
+[node name="bgmPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_a6tu7")
+volume_db = -10.833
+pitch_scale = 0.72
+autoplay = true
+bus = &"BGM"
+parameters/looping = true
