@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwl781ba7ljj3"]
+[gd_scene load_steps=13 format=3 uid="uid://bwl781ba7ljj3"]
 
 [ext_resource type="Script" path="res://scripts/domino.gd" id="1_j5684"]
 [ext_resource type="Script" path="res://scripts/collidable_domino.gd" id="2_a8nhh"]
 [ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="3_q8o4t"]
+[ext_resource type="AudioStream" uid="uid://cuaryq32hikv8" path="res://assets/chipsCollide1.ogg" id="4_s2vr7"]
+[ext_resource type="AudioStream" uid="uid://chvyi1hyt12aw" path="res://assets/chipsCollide2.ogg" id="5_ubjh2"]
+[ext_resource type="AudioStream" uid="uid://dl6r5i82we6ww" path="res://assets/chipsCollide3.ogg" id="6_frh0c"]
+[ext_resource type="AudioStream" uid="uid://bx2dhkeybwg3f" path="res://assets/chipsCollide4.ogg" id="7_a4po5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sdo0x"]
 size = Vector3(1.1991, 4.1848, 1.9165)
@@ -20,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -1.22173)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_r54d8"]
 resource_name = "tip_over"
@@ -35,6 +51,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -1.22173)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cumg4"]
 _data = {
@@ -42,11 +70,19 @@ _data = {
 "tip_over": SubResource("Animation_r54d8")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b3n4v"]
+streams_count = 4
+stream_0/stream = ExtResource("4_s2vr7")
+stream_1/stream = ExtResource("5_ubjh2")
+stream_2/stream = ExtResource("6_frh0c")
+stream_3/stream = ExtResource("7_a4po5")
+
 [node name="domino" type="Node3D" groups=["dominoes"]]
 script = ExtResource("1_j5684")
 metadata/_edit_group_ = true
 
 [node name="physics" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="RigidBody3D" type="RigidBody3D" parent="physics"]
@@ -71,6 +107,11 @@ shape = SubResource("BoxShape3D_sdo0x")
 libraries = {
 "": SubResource("AnimationLibrary_cumg4")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+stream = SubResource("AudioStreamRandomizer_b3n4v")
+bus = &"SFX"
 
 [connection signal="area_shape_entered" from="physics/RigidBody3D/Area3D" to="." method="_on_domino_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_end"]

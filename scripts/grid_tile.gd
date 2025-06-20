@@ -26,7 +26,7 @@ static func new_gridTile(tile_id : String, current)-> gridTile:
 
 func _ready():
 	if start_domino or locked_domino:
-		spawn_domino(start_domino, spawn_angle)
+		spawn_domino(start_domino)
 	else:
 		%mouseArea.mouse_entered.connect(on_mouseover)
 		%mouseArea.mouse_exited.connect(on_mouse_off)
@@ -43,12 +43,12 @@ func on_mouse_off():
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if Input.is_action_just_pressed("LeftMouseClick"):
 		$AnimationPlayer.play("clicked")
-		spawn_domino(false, spawn_angle)
+		spawn_domino(false)
 	if Input.is_action_just_pressed("RightMouseClick"):
 		$AnimationPlayer.play("rightClicked")
 		remove_domino()
 		
-func spawn_domino(start_domino: bool, spawn_angle: float):
+func spawn_domino(start_domino: bool):#, spawn_angle: float):
 	if current_domino != null:
 		return
 	var new_domino : Domino = DOMINO_SCENE.instantiate()

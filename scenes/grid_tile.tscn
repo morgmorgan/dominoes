@@ -76,7 +76,7 @@ script = ExtResource("1_6tc4f")
 [node name="tileModel" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="tileModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0527782, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 mesh = SubResource("PlaneMesh_n8gdt")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_afc73")
