@@ -31,13 +31,16 @@ func _ready():
 		%mouseArea.mouse_entered.connect(on_mouseover)
 		%mouseArea.mouse_exited.connect(on_mouse_off)
 		%mouseArea.input_event.connect(on_tile_input)
+		MouseWheelTracker.spawn_angle_changed.connect(show_ghost)
 	
 func on_mouseover():
 	tile_gfx.set_surface_override_material(0, HIGHLIGHT_MATERIAL)
+	mouse_active = true
 	show_ghost()
 	
 func on_mouse_off():
 	tile_gfx.set_surface_override_material(0, NORMAL_MATERIAL)
+	mouse_active = false
 	remove_ghost()
 	
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
@@ -71,7 +74,7 @@ func remove_ghost():
 		ghost = null
 
 func show_ghost():
-	if current_domino != null:
+	if (current_domino != null) or !mouse_active:
 		return
 	
 	remove_ghost()
