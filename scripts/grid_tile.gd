@@ -6,7 +6,7 @@ const DOMINO_SCENE : PackedScene = preload("res://scenes/domino.tscn")
 const HIGHLIGHT_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_hilight.tres")
 const NORMAL_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_normal.tres")
 
-@export var tile_id : String = "tile0"
+#@export var tile_id : String = "tile0"
 @export var current_domino : Domino = null
 
 @onready var spawn_point : Vector3 = $dominoSpawnPoint.position
@@ -19,10 +19,10 @@ var ghost : Node3D = null
 var mouse_active = false
 
 # Static Constructor for spawning via code
-static func new_gridTile(tile_id : String, current)-> gridTile:
-	var new_tile : gridTile = GRIDTILE_SCENE.instantiate()
-	new_tile.tile_id = tile_id
-	return new_tile
+#static func new_gridTile(tile_id : String, current)-> gridTile:
+#	var new_tile : gridTile = GRIDTILE_SCENE.instantiate()
+#	new_tile.tile_id = tile_id
+#	return new_tile
 
 func _ready():
 	if start_domino or locked_domino:
@@ -32,16 +32,25 @@ func _ready():
 		%mouseArea.mouse_exited.connect(on_mouse_off)
 		%mouseArea.input_event.connect(on_tile_input)
 		MouseWheelTracker.spawn_angle_changed.connect(show_ghost)
+		MouseWheelTracker.tile_active.connect(check_active_tile)
+
+func check_active_tile(tile_node_name : String):
+	if name != tile_node_name:
+		deselect_tile()
+	
+func deselect_tile():
+	tile_gfx.set_surface_override_material(0, NORMAL_MATERIAL)
+	mouse_active = false
+	remove_ghost()
 	
 func on_mouseover():
+	MouseWheelTracker.new_active_tile(name)
 	tile_gfx.set_surface_override_material(0, HIGHLIGHT_MATERIAL)
 	mouse_active = true
 	show_ghost()
 	
 func on_mouse_off():
-	tile_gfx.set_surface_override_material(0, NORMAL_MATERIAL)
-	mouse_active = false
-	remove_ghost()
+	deselect_tile()
 	
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
 	if Input.is_action_just_pressed("LeftMouseClick"):
