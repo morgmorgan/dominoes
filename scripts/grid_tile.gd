@@ -15,6 +15,9 @@ const NORMAL_MATERIAL : StandardMaterial3D = preload("res://resources/gridtile_n
 @export var locked_domino = false
 @export var spawn_angle = 0
 
+#TODO: DOMINO TYPE SHOULD BE SET FROM UI
+@export var type: Domino.DominoType = Domino.DominoType.GENERIC
+
 var ghost : Node3D = null
 var mouse_active = false
 
@@ -64,6 +67,7 @@ func spawn_domino(start_domino: bool):#, spawn_angle: float):
 	if current_domino != null:
 		return
 	var new_domino : Domino = DOMINO_SCENE.instantiate()
+	new_domino.type = type
 	new_domino.start_domino = start_domino
 	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_domino.position = spawn_point
