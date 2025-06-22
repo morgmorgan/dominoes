@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drigcgcpl6n0r"]
+[gd_scene load_steps=8 format=3 uid="uid://drigcgcpl6n0r"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
 [ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="2_454y7"]
+[ext_resource type="PackedScene" uid="uid://dt6guho71drxc" path="res://scenes/button.tscn" id="3_y161o"]
+[ext_resource type="AudioStream" uid="uid://b0kiodcfdtmnh" path="res://assets/Golf clap sound Effect.mp3" id="4_62hxr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eg61c"]
 sky_top_color = Color(0.534315, 0.772384, 1, 1)
@@ -88,9 +90,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 [node name="gridTile17" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
 
-[node name="gridTile18" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
-
 [node name="gridTile19" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 9)
 
@@ -108,3 +107,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
 
 [node name="gridTile24" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
+
+[node name="winTile" parent="grid" instance=ExtResource("3_y161o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_62hxr")
+
+[connection signal="button_changed" from="grid/winTile" to="." method="_on_win_tile_button_changed"]

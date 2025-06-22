@@ -12,7 +12,14 @@ func _process(delta: float) -> void:
 			if domino.start_domino:
 				domino.tip_domino()
 	pass
-
+	
 func how_many_dominoes() -> int:
 	var dominoes = $".".find_children("domino*", "", true, false)	
 	return dominoes.size()
+
+
+func _on_win_tile_button_changed(pressed: bool) -> void:
+	if pressed:
+		print("You Won! Get back to work now.")
+		$AudioStreamPlayer.play(0.3)
+	pass # Replace with function body.
