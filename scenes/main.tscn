@@ -3,31 +3,37 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
 [ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="2_454y7"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3k6k5"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eg61c"]
+sky_top_color = Color(0.534315, 0.772384, 1, 1)
+sky_horizon_color = Color(0.875026, 0.838683, 0.913745, 1)
+ground_bottom_color = Color(0.965788, 0.582349, 0.654981, 1)
+ground_horizon_color = Color(0.875026, 0.838683, 0.913745, 1)
 
-[sub_resource type="Sky" id="Sky_17iu1"]
-sky_material = SubResource("ProceduralSkyMaterial_3k6k5")
+[sub_resource type="Sky" id="Sky_225ip"]
+sky_material = SubResource("ProceduralSkyMaterial_eg61c")
 
-[sub_resource type="Environment" id="Environment_bcea3"]
+[sub_resource type="Environment" id="Environment_q75so"]
 background_mode = 2
-sky = SubResource("Sky_17iu1")
+sky = SubResource("Sky_225ip")
+ambient_light_sky_contribution = 0.4
 tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jay6m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bcea3")
+environment = SubResource("Environment_q75so")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.05
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.809099, 0, 0.587672, 0, 1, 0, -0.587672, 0, 0.809099, 13.3336, 4.34203, 10.6917)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 9.75377, 9.05764, 10.2288)
+projection = 1
 current = true
+size = 21.9598
 
 [node name="grid" type="Node" parent="."]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7v14h4p38078"]
+[gd_scene load_steps=7 format=3 uid="uid://b7v14h4p38078"]
 
 [ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="1_48i06"]
+[ext_resource type="PackedScene" uid="uid://c2ly5xygvylk8" path="res://scenes/arrow_model.tscn" id="2_0a51m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7815"]
 transparency = 1
@@ -8,7 +9,77 @@ albedo_color = Color(0.215686, 1, 1, 0.188235)
 emission = Color(0, 1, 1, 1)
 emission_energy_multiplier = 18.5
 
+[sub_resource type="Animation" id="Animation_fwngb"]
+resource_name = "arrow bounce"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowModel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 2, 0), Vector3(2, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowModel:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.75, 0.75, 0.75), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8pel4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowModel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowModel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iposv"]
+_data = {
+"RESET": SubResource("Animation_8pel4"),
+"arrow bounce": SubResource("Animation_fwngb")
+}
+
 [node name="ghostDominoBasic" instance=ExtResource("1_48i06")]
 
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_d7815")
+
+[node name="ArrowModel" parent="." index="1" instance=ExtResource("2_0a51m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_iposv")
+}
+autoplay = "arrow bounce"
