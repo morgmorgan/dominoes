@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 	
 	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result.has("position"):
-		print($".".map_to_local(raycast_result["position"]))
 		MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
 	else:
 		MouseWheelTracker.clear_spawn()
@@ -64,10 +63,8 @@ func remove_ghost():
 
 func show_ghost():
 	if dominos.has(MouseWheelTracker.currrent_spawn) or not MouseWheelTracker.active:
-		print("Not placing a ghost")
 		return
-	
-	print("removing a ghost")
+		
 	remove_ghost()
 	
 	var new_ghost : Node3D = GHOST_DOMINO_SCENE.instantiate()
