@@ -1,0 +1,18 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ba1vf4f4dxks6"]
+
+[ext_resource type="Texture2D" uid="uid://diibw5s4bj0w" path="res://assets/Background.png" id="1_ruk8q"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gt3sw"]
+panorama = ExtResource("1_ruk8q")
+filter = false
+
+[sub_resource type="Sky" id="Sky_225ip"]
+sky_material = SubResource("PanoramaSkyMaterial_gt3sw")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_225ip")
+sky_custom_fov = 124.3
+sky_rotation = Vector3(3.19744, -0.329867, 0)
+ambient_light_sky_contribution = 0.4
+tonemap_mode = 2

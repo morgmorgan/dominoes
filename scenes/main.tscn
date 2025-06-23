@@ -1,35 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://drigcgcpl6n0r"]
+[gd_scene load_steps=7 format=3 uid="uid://drigcgcpl6n0r"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
 [ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="2_454y7"]
-[ext_resource type="PackedScene" uid="uid://dt6guho71drxc" path="res://scenes/button.tscn" id="3_y161o"]
+[ext_resource type="Texture2D" uid="uid://diibw5s4bj0w" path="res://assets/Background.png" id="2_fa2ko"]
+[ext_resource type="Environment" uid="uid://0yp4eu67fywx" path="res://resources/trans_env.tres" id="3_fks2e"]
+[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="3_y161o"]
 [ext_resource type="AudioStream" uid="uid://b0kiodcfdtmnh" path="res://assets/Golf clap sound Effect.mp3" id="4_62hxr"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eg61c"]
-sky_top_color = Color(0.534315, 0.772384, 1, 1)
-sky_horizon_color = Color(0.875026, 0.838683, 0.913745, 1)
-ground_bottom_color = Color(0.965788, 0.582349, 0.654981, 1)
-ground_horizon_color = Color(0.875026, 0.838683, 0.913745, 1)
-
-[sub_resource type="Sky" id="Sky_225ip"]
-sky_material = SubResource("ProceduralSkyMaterial_eg61c")
-
-[sub_resource type="Environment" id="Environment_q75so"]
-background_mode = 2
-sky = SubResource("Sky_225ip")
-ambient_light_sky_contribution = 0.4
-tonemap_mode = 2
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jay6m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_q75so")
+environment = ExtResource("3_fks2e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 light_energy = 0.05
 shadow_enabled = true
+
+[node name="BG" type="Sprite3D" parent="."]
+transform = Transform3D(7.07107, -5, 5, 0, 7.07107, 7.07107, -7.07107, -5, 5, -15, -20, -15)
+texture = ExtResource("2_fa2ko")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 9.75377, 9.05764, 10.2288)
@@ -62,7 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 
 [node name="gridTile8" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-start_domino = true
 
 [node name="gridTile9" parent="grid" instance=ExtResource("2_454y7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
