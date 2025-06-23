@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b81mb48fi5tto"]
 
 [ext_resource type="PackedScene" uid="uid://c4aucslm5367l" path="res://assets/button.glb" id="1_c8xdb"]
-[ext_resource type="Script" path="res://button.gd" id="2_ec3tw"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="2_ec3tw"]
 [ext_resource type="Material" uid="uid://cqj8nod67cy46" path="res://resources/gridtile_rightClicked.tres" id="3_q8jrg"]
 
 [sub_resource type="Animation" id="Animation_8aqdg"]
