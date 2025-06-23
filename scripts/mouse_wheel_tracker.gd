@@ -5,6 +5,7 @@ const ANGLE_INCREMENT = 15
 signal spawn_angle_changed
 signal tile_active(tile_node_name : String)
 
+var current_tile: String
 var spawn_angle : int = 0
 
 func _process(delta: float) -> void:
@@ -25,5 +26,19 @@ func _process(delta: float) -> void:
 #
 # If I wasn't too lazy to change every reference to mousewheeltracker I would
 # just rename this singleton to "EventManager" or something
-func new_active_tile(tile_node_name : String):
-	tile_active.emit(tile_node_name)
+func spawn_input_handler(camera: Camera3D, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
+	var spawn_pts = get_tree().get_nodes_in_group("spawn_points")
+	var norms = spawn_pts.map(func(x: Node3D): return camera.unproject_position(x.global_position)).map(func(y: Vector2): return (event.position - y).length())
+	
+	var d = {}
+	
+	for i in range(spawn_pts.size()):
+		d.get_or_add(spawn_pts[i], norms[i])
+	
+	var sorted = d.values()
+	sorted.sort()
+	
+	var closest = d.find_key(sorted[0])
+	if closest.name != current_tile:
+		current_tile = closest.name
+		tile_active.emit(closest.name)

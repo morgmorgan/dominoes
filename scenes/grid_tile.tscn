@@ -1,67 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuskqxdcolbu8"]
+[gd_scene load_steps=8 format=3 uid="uid://cuskqxdcolbu8"]
 
 [ext_resource type="Script" path="res://scripts/grid_tile.gd" id="1_6tc4f"]
-[ext_resource type="Material" uid="uid://daajbgq0s2uek" path="res://resources/gridtile_hilight.tres" id="2_e3w5n"]
-[ext_resource type="Material" uid="uid://b3s7bnt8ay6of" path="res://resources/gridtile_normal.tres" id="3_afc73"]
-[ext_resource type="Material" uid="uid://cfs8m7vjqcqnx" path="res://resources/gridtile_clicked.tres" id="4_it3os"]
-[ext_resource type="Material" uid="uid://cqj8nod67cy46" path="res://resources/gridtile_rightClicked.tres" id="5_xwty1"]
-[ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="6_7mylv"]
 [ext_resource type="AudioStream" uid="uid://cor80jetkn0sx" path="res://assets/dieThrow2.ogg" id="7_o2eph"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_n8gdt"]
-size = Vector2(3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_srxyy"]
 size = Vector3(2, 0, 2)
 
 [sub_resource type="Animation" id="Animation_2yw5y"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("tileModel/MeshInstance3D:surface_material_override/0")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_afc73")]
-}
 
 [sub_resource type="Animation" id="Animation_txt5d"]
 resource_name = "clicked"
 length = 0.16
 step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("tileModel/MeshInstance3D:surface_material_override/0")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.15, 0.16),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_e3w5n"), ExtResource("4_it3os"), ExtResource("4_it3os"), ExtResource("2_e3w5n")]
-}
 
 [sub_resource type="Animation" id="Animation_apmm2"]
 resource_name = "rightClicked"
 length = 0.16
 step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("tileModel/MeshInstance3D:surface_material_override/0")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.15, 0.16),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_e3w5n"), ExtResource("5_xwty1"), ExtResource("5_xwty1"), ExtResource("2_e3w5n")]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7sy4"]
 _data = {
@@ -70,21 +26,8 @@ _data = {
 "rightClicked": SubResource("Animation_apmm2")
 }
 
-[node name="gridTile" type="Node3D"]
+[node name="dominoSpawnPoint" type="Node3D" groups=["spawn_points"]]
 script = ExtResource("1_6tc4f")
-
-[node name="tileModel" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="tileModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
-mesh = SubResource("PlaneMesh_n8gdt")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("3_afc73")
-
-[node name="nice_rounded_cube" parent="tileModel" instance=ExtResource("6_7mylv")]
-transform = Transform3D(1.714, 0, 0, 0, 1.714, 0, 0, 0, 1.714, 0, 0, 0)
-
-[node name="dominoSpawnPoint" type="Node3D" parent="."]
 
 [node name="mouseArea" type="Area3D" parent="."]
 unique_name_in_owner = true

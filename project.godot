@@ -27,6 +27,7 @@ project/assembly_name="domoinoes"
 [global_group]
 
 dominoes=""
+spawn_points=""
 
 [input]
 

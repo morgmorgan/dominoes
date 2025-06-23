@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://moq1k7dju5pv"]
+
+[ext_resource type="Script" path="res://scripts/tiled_scene.gd" id="2_cs8pb"]
+[ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="2_n2vco"]
+[ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="2_pxxfx"]
+
+[node name="tiledScene" type="Node3D"]
+
+[node name="origin" type="Node3D" parent="."]
+
+[node name="end" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3678, 0, 7)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 9.75377, 9.05764, 10.2288)
+projection = 1
+current = true
+size = 21.9598
+
+[node name="basic_domino" parent="." instance=ExtResource("2_n2vco")]
+transform = Transform3D(0.555225, 0, -0.831854, 0, 1, 0, 0.831854, 0, 0.555225, 0, 0, 0)
+
+[node name="meep" type="Node3D" parent="." node_paths=PackedStringArray("origin", "end")]
+script = ExtResource("2_cs8pb")
+SceneResource = ExtResource("2_pxxfx")
+origin = NodePath("../origin")
+end = NodePath("../end")
+width = 3
+length = 10
+
+[node name="dominoSpawnPoint" parent="meep" instance=ExtResource("2_pxxfx")]
+start_domino = true
+
+[node name="dominoSpawnPoint2" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+
+[node name="dominoSpawnPoint3" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="dominoSpawnPoint4" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15198, 0, 0)
+
+[node name="dominoSpawnPoint5" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15198, 0, 3.5)
+
+[node name="dominoSpawnPoint6" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15198, 0, 7)
+
+[node name="dominoSpawnPoint7" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30396, 0, 0)
+
+[node name="dominoSpawnPoint8" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30396, 0, 3.5)
+
+[node name="dominoSpawnPoint9" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30396, 0, 7)
+
+[node name="dominoSpawnPoint10" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45593, 0, 0)
+
+[node name="dominoSpawnPoint11" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45593, 0, 3.5)
+
+[node name="dominoSpawnPoint12" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45593, 0, 7)
+
+[node name="dominoSpawnPoint13" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60791, 0, 0)
+
+[node name="dominoSpawnPoint14" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60791, 0, 3.5)
+
+[node name="dominoSpawnPoint15" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60791, 0, 7)
+
+[node name="dominoSpawnPoint16" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7599, 0, 0)
+
+[node name="dominoSpawnPoint17" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7599, 0, 3.5)
+
+[node name="dominoSpawnPoint18" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7599, 0, 7)
+
+[node name="dominoSpawnPoint19" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9119, 0, 0)
+
+[node name="dominoSpawnPoint20" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9119, 0, 3.5)
+
+[node name="dominoSpawnPoint21" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9119, 0, 7)
+
+[node name="dominoSpawnPoint22" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0638, 0, 0)
+
+[node name="dominoSpawnPoint23" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0638, 0, 3.5)
+
+[node name="dominoSpawnPoint24" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0638, 0, 7)
+
+[node name="dominoSpawnPoint25" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2158, 0, 0)
+
+[node name="dominoSpawnPoint26" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2158, 0, 3.5)
+
+[node name="dominoSpawnPoint27" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2158, 0, 7)
+
+[node name="dominoSpawnPoint28" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3678, 0, 0)
+
+[node name="dominoSpawnPoint29" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3678, 0, 3.5)
+
+[node name="dominoSpawnPoint30" parent="meep" instance=ExtResource("2_pxxfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3678, 0, 7)

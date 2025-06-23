@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://drigcgcpl6n0r"]
+[gd_scene load_steps=8 format=3 uid="uid://drigcgcpl6n0r"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
-[ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="2_454y7"]
 [ext_resource type="Texture2D" uid="uid://diibw5s4bj0w" path="res://assets/Background.png" id="2_fa2ko"]
-[ext_resource type="Environment" uid="uid://0yp4eu67fywx" path="res://resources/trans_env.tres" id="3_fks2e"]
-[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="3_y161o"]
+[ext_resource type="Environment" uid="uid://bkiwvspvw64rh" path="res://resources/trans_env.tres" id="3_fks2e"]
 [ext_resource type="AudioStream" uid="uid://b0kiodcfdtmnh" path="res://assets/Golf clap sound Effect.mp3" id="4_62hxr"]
+[ext_resource type="Script" path="res://scripts/tiled_scene.gd" id="5_65gv4"]
+[ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="6_l8wyh"]
+[ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="6_ph4i2"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jay6m")
@@ -28,82 +29,376 @@ projection = 1
 current = true
 size = 21.9598
 
-[node name="grid" type="Node" parent="."]
-
-[node name="gridTile" parent="grid" instance=ExtResource("2_454y7")]
-
-[node name="gridTile3" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-
-[node name="gridTile2" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-start_domino = true
-
-[node name="gridTile4" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-
-[node name="gridTile5" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
-
-[node name="gridTile6" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
-
-[node name="gridTile7" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
-
-[node name="gridTile8" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-
-[node name="gridTile9" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-
-[node name="gridTile10" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9)
-
-[node name="gridTile11" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
-
-[node name="gridTile12" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 12)
-
-[node name="gridTile13" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-
-[node name="gridTile14" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
-
-[node name="gridTile15" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
-type = 1
-
-[node name="gridTile16" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-
-[node name="gridTile17" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3)
-
-[node name="gridTile19" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 9)
-
-[node name="gridTile20" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
-
-[node name="gridTile21" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
-
-[node name="gridTile22" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
-
-[node name="gridTile23" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 6)
-
-[node name="gridTile24" parent="grid" instance=ExtResource("2_454y7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12)
-
-[node name="winTile" parent="grid" instance=ExtResource("3_y161o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_62hxr")
 
-[connection signal="button_changed" from="grid/winTile" to="." method="_on_win_tile_button_changed"]
+[node name="CubeTiler" type="Node" parent="." node_paths=PackedStringArray("origin", "end")]
+script = ExtResource("5_65gv4")
+SceneResource = ExtResource("6_ph4i2")
+origin = NodePath("../origin")
+end = NodePath("../end")
+width = 6
+length = 6
+
+[node name="nice_rounded_cube" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+
+[node name="nice_rounded_cube2" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6)
+
+[node name="nice_rounded_cube3" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2)
+
+[node name="nice_rounded_cube4" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.8)
+
+[node name="nice_rounded_cube5" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.4)
+
+[node name="nice_rounded_cube6" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="nice_rounded_cube7" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
+[node name="nice_rounded_cube8" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 1.6)
+
+[node name="nice_rounded_cube9" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 3.2)
+
+[node name="nice_rounded_cube10" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 4.8)
+
+[node name="nice_rounded_cube11" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 6.4)
+
+[node name="nice_rounded_cube12" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 8)
+
+[node name="nice_rounded_cube13" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 0)
+
+[node name="nice_rounded_cube14" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 1.6)
+
+[node name="nice_rounded_cube15" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 3.2)
+
+[node name="nice_rounded_cube16" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 4.8)
+
+[node name="nice_rounded_cube17" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 6.4)
+
+[node name="nice_rounded_cube18" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 8)
+
+[node name="nice_rounded_cube19" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 0)
+
+[node name="nice_rounded_cube20" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 1.6)
+
+[node name="nice_rounded_cube21" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 3.2)
+
+[node name="nice_rounded_cube22" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 4.8)
+
+[node name="nice_rounded_cube23" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 6.4)
+
+[node name="nice_rounded_cube24" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 8)
+
+[node name="nice_rounded_cube25" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 0)
+
+[node name="nice_rounded_cube26" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 1.6)
+
+[node name="nice_rounded_cube27" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 3.2)
+
+[node name="nice_rounded_cube28" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 4.8)
+
+[node name="nice_rounded_cube29" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 6.4)
+
+[node name="nice_rounded_cube30" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, 8)
+
+[node name="nice_rounded_cube31" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="nice_rounded_cube32" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1.6)
+
+[node name="nice_rounded_cube33" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3.2)
+
+[node name="nice_rounded_cube34" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4.8)
+
+[node name="nice_rounded_cube35" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6.4)
+
+[node name="nice_rounded_cube36" parent="CubeTiler" instance=ExtResource("6_ph4i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="dominoSpawnerTiler" type="Node" parent="." node_paths=PackedStringArray("origin", "end")]
+script = ExtResource("5_65gv4")
+SceneResource = ExtResource("6_l8wyh")
+origin = NodePath("../origin")
+end = NodePath("../end")
+width = 9
+length = 9
+
+[node name="dominoSpawnPoint" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+
+[node name="dominoSpawnPoint2" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+start_domino = true
+
+[node name="dominoSpawnPoint3" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="dominoSpawnPoint4" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="dominoSpawnPoint5" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="dominoSpawnPoint6" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="dominoSpawnPoint7" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="dominoSpawnPoint8" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="dominoSpawnPoint9" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="dominoSpawnPoint10" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="dominoSpawnPoint11" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="dominoSpawnPoint12" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+
+[node name="dominoSpawnPoint13" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="dominoSpawnPoint14" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="dominoSpawnPoint15" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+
+[node name="dominoSpawnPoint16" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6)
+
+[node name="dominoSpawnPoint17" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="dominoSpawnPoint18" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8)
+
+[node name="dominoSpawnPoint19" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="dominoSpawnPoint20" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="dominoSpawnPoint21" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="dominoSpawnPoint22" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+
+[node name="dominoSpawnPoint23" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="dominoSpawnPoint24" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="dominoSpawnPoint25" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="dominoSpawnPoint26" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+
+[node name="dominoSpawnPoint27" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="dominoSpawnPoint28" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="dominoSpawnPoint29" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+
+[node name="dominoSpawnPoint30" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="dominoSpawnPoint31" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="dominoSpawnPoint32" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="dominoSpawnPoint33" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="dominoSpawnPoint34" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 6)
+
+[node name="dominoSpawnPoint35" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+
+[node name="dominoSpawnPoint36" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
+
+[node name="dominoSpawnPoint37" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="dominoSpawnPoint38" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+
+[node name="dominoSpawnPoint39" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="dominoSpawnPoint40" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="dominoSpawnPoint41" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="dominoSpawnPoint42" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+
+[node name="dominoSpawnPoint43" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+
+[node name="dominoSpawnPoint44" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
+
+[node name="dominoSpawnPoint45" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="dominoSpawnPoint46" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="dominoSpawnPoint47" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+
+[node name="dominoSpawnPoint48" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+
+[node name="dominoSpawnPoint49" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+
+[node name="dominoSpawnPoint50" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
+
+[node name="dominoSpawnPoint51" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="dominoSpawnPoint52" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
+
+[node name="dominoSpawnPoint53" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
+
+[node name="dominoSpawnPoint54" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 8)
+
+[node name="dominoSpawnPoint55" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="dominoSpawnPoint56" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1)
+
+[node name="dominoSpawnPoint57" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="dominoSpawnPoint58" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+
+[node name="dominoSpawnPoint59" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="dominoSpawnPoint60" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 5)
+
+[node name="dominoSpawnPoint61" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="dominoSpawnPoint62" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 7)
+
+[node name="dominoSpawnPoint63" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 8)
+
+[node name="dominoSpawnPoint64" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="dominoSpawnPoint65" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+
+[node name="dominoSpawnPoint66" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 2)
+
+[node name="dominoSpawnPoint67" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="dominoSpawnPoint68" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+
+[node name="dominoSpawnPoint69" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+
+[node name="dominoSpawnPoint70" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6)
+
+[node name="dominoSpawnPoint71" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
+[node name="dominoSpawnPoint72" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 8)
+
+[node name="dominoSpawnPoint73" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="dominoSpawnPoint74" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 1)
+
+[node name="dominoSpawnPoint75" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="dominoSpawnPoint76" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3)
+
+[node name="dominoSpawnPoint77" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="dominoSpawnPoint78" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+
+[node name="dominoSpawnPoint79" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+
+[node name="dominoSpawnPoint80" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
+
+[node name="dominoSpawnPoint81" parent="dominoSpawnerTiler" instance=ExtResource("6_l8wyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="origin" type="Node3D" parent="."]
+
+[node name="end" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
