@@ -41,4 +41,7 @@ func spawn_input_handler(camera: Camera3D, event: InputEvent, event_position: Ve
 	var closest = d.find_key(sorted[0])
 	if closest.name != current_tile:
 		current_tile = closest.name
-		tile_active.emit(closest.name)
+		tile_active.emit(current_tile)
+
+	# i hate this, and this is sloppy but
+	return current_tile

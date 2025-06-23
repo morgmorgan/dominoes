@@ -31,7 +31,7 @@ func _ready():
 		spawn_domino(start_domino)
 	else:
 		#%mouseArea.mouse_entered.connect(on_mouseover)
-		#%mouseArea.mouse_exited.connect(on_mouse_off)
+		%mouseArea.mouse_exited.connect(on_mouse_off)
 		%mouseArea.input_event.connect(on_tile_input)
 		MouseWheelTracker.spawn_angle_changed.connect(show_ghost)
 		MouseWheelTracker.tile_active.connect(check_active_tile)
@@ -51,11 +51,14 @@ func check_active_tile(tile_node_name : String):
 	#mouse_active = true
 	#show_ghost()
 	#
-#func on_mouse_off():
-	#deselect_tile()
+func on_mouse_off():
+	remove_ghost()
 	
 func on_tile_input(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
-	MouseWheelTracker.spawn_input_handler(camera, event, event_position, normal, shape_idx)
+	check_active_tile(MouseWheelTracker.spawn_input_handler(camera, event, event_position, normal, shape_idx))
+	
+	if not mouse_active:
+		return
 	
 	if Input.is_action_just_pressed("LeftMouseClick"):
 		$AnimationPlayer.play("clicked")
