@@ -96,6 +96,8 @@ shape = SubResource("BoxShape3D_sdo0x")
 
 [node name="Area3D" type="Area3D" parent="physics/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 2
+collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("2_a8nhh")
 metadata/_edit_group_ = true

@@ -1,0 +1,77 @@
+extends GridMap
+
+const GHOST_DOMINO_SCENE : PackedScene = preload("res://scenes/ghost_domino_basic.tscn")
+const DOMINO_SCENE : PackedScene = preload("res://scenes/domino.tscn")
+
+#TODO: DOMINO TYPE SHOULD BE SET FROM UI
+@export var type: Domino.DominoType = Domino.DominoType.GENERIC
+
+var dominos = {}
+var ghost
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	MouseWheelTracker.spawn_angle_changed.connect(show_ghost)
+	MouseWheelTracker.spawn_domino.connect(spawn_domino)
+	MouseWheelTracker.spawn_changed.connect(show_ghost)
+	MouseWheelTracker.remove_domino.connect(remove_domino)
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var camera = get_viewport().get_camera_3d()
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 100;
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	ray_query.collide_with_areas = true
+	
+	var raycast_result = space.intersect_ray(ray_query)
+	if raycast_result.has("position"):
+		print($".".map_to_local(raycast_result["position"]))
+		MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
+	else:
+		MouseWheelTracker.clear_spawn()
+		
+func spawn_domino():#, spawn_angle: float):
+	if dominos.has(MouseWheelTracker.currrent_spawn):
+		return
+		
+	var new_domino : Domino = DOMINO_SCENE.instantiate()
+	new_domino.type = type
+	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
+	new_domino.position = MouseWheelTracker.currrent_spawn
+	dominos[MouseWheelTracker.currrent_spawn] = new_domino
+	add_child(new_domino, true)
+	%dominoPlaceSFX.position = MouseWheelTracker.currrent_spawn
+	%dominoPlaceSFX.play()
+
+func remove_domino():
+	if dominos.has(MouseWheelTracker.currrent_spawn):
+		remove_child(dominos.get(MouseWheelTracker.currrent_spawn))
+		dominos.erase(MouseWheelTracker.currrent_spawn)
+	else:
+		print("tried removing a domino that wasnt placed")
+	
+func remove_ghost():
+	if ghost != null:
+		remove_child(ghost)
+		ghost = null
+
+func show_ghost():
+	if dominos.has(MouseWheelTracker.currrent_spawn) or not MouseWheelTracker.active:
+		print("Not placing a ghost")
+		return
+	
+	print("removing a ghost")
+	remove_ghost()
+	
+	var new_ghost : Node3D = GHOST_DOMINO_SCENE.instantiate()
+	new_ghost.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
+	new_ghost.position = MouseWheelTracker.currrent_spawn
+	ghost = new_ghost
+	add_child(new_ghost, true)

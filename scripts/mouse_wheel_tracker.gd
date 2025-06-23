@@ -3,10 +3,13 @@ extends Node
 const ANGLE_INCREMENT = 15
 
 signal spawn_angle_changed
-signal tile_active(tile_node_name : String)
+signal spawn_changed(tile_node_name : String)
+signal spawn_domino
+signal remove_domino
 
-var current_tile: String
 var spawn_angle : int = 0
+var currrent_spawn: Vector3
+var active = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("MouseWheelUp"):
@@ -19,6 +22,10 @@ func _process(delta: float) -> void:
 			spawn_angle -= ANGLE_INCREMENT
 			spawn_angle_changed.emit()
 			#print_debug(spawn_angle)
+	if Input.is_action_just_pressed("LeftMouseClick"):
+		spawn_domino.emit()
+	if Input.is_action_just_pressed("RightMouseClick"):
+		remove_domino.emit()
 			
 # Yes I know this is the mouse wheel tracker singleton I just didn't
 # think it was worth writing an entirely new singleton for one function
@@ -26,22 +33,14 @@ func _process(delta: float) -> void:
 #
 # If I wasn't too lazy to change every reference to mousewheeltracker I would
 # just rename this singleton to "EventManager" or something
-func spawn_input_handler(camera: Camera3D, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int):
-	var spawn_pts = get_tree().get_nodes_in_group("spawn_points")
-	var norms = spawn_pts.map(func(x: Node3D): return camera.unproject_position(x.global_position)).map(func(y: Vector2): return (event.position - y).length())
-	
-	var d = {}
-	
-	for i in range(spawn_pts.size()):
-		d.get_or_add(spawn_pts[i], norms[i])
-	
-	var sorted = d.values()
-	sorted.sort()
-	
-	var closest = d.find_key(sorted[0])
-	if closest.name != current_tile:
-		current_tile = closest.name
-		tile_active.emit(current_tile)
-
-	# i hate this, and this is sloppy but
-	return current_tile
+func update_spawn(position: Vector3):
+	if position != currrent_spawn or not active:
+		print("updated")
+		currrent_spawn = position
+		active = true
+		spawn_changed.emit()
+		
+func clear_spawn():
+	if active: 
+		active = false
+		spawn_changed.emit()
