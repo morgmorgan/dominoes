@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="3_yidpg"]
 [ext_resource type="PackedScene" uid="uid://c0mjohwcsb1r3" path="res://scenes/falling_domino.tscn" id="4_lvm1v"]
 [ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="5_e4dbc"]
-[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="6_i6o6l"]
+[ext_resource type="PackedScene" uid="uid://dt6guho71drxc" path="res://scenes/button.tscn" id="6_i6o6l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivo6o"]
 
@@ -138,7 +138,7 @@ physics_material_override = SubResource("PhysicsMaterial_3d8mv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="solids/RigidBody3D6"]
 shape = SubResource("BoxShape3D_m8b12")
 
-[node name="buttonTile" parent="solids/RigidBody3D6" instance=ExtResource("6_i6o6l")]
+[node name="buttonTile" type="Node3D" parent="solids/RigidBody3D6" instance=ExtResource("6_i6o6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="solids"]

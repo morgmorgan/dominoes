@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
 [ext_resource type="Texture2D" uid="uid://diibw5s4bj0w" path="res://assets/Background.png" id="2_fa2ko"]
-[ext_resource type="Environment" uid="uid://bkiwvspvw64rh" path="res://resources/trans_env.tres" id="3_fks2e"]
+[ext_resource type="Environment" uid="uid://0yp4eu67fywx" path="res://resources/trans_env.tres" id="3_fks2e"]
 [ext_resource type="AudioStream" uid="uid://b0kiodcfdtmnh" path="res://assets/Golf clap sound Effect.mp3" id="4_62hxr"]
 [ext_resource type="Script" path="res://scripts/tiled_scene.gd" id="5_65gv4"]
 [ext_resource type="PackedScene" uid="uid://cuskqxdcolbu8" path="res://scenes/grid_tile.tscn" id="6_l8wyh"]

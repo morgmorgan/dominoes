@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt6guho71drxc"]
 
 [ext_resource type="PackedScene" uid="uid://fjtdn54xpngs" path="res://assets/nice_rounded_cube.glb" id="1_kxleh"]
-[ext_resource type="Script" path="res://scenes/button_tile.gd" id="1_q0bax"]
+[ext_resource type="Script" path="res://scripts/button_tile.gd" id="1_q0bax"]
 [ext_resource type="PackedScene" uid="uid://b81mb48fi5tto" path="res://scenes/button_alone.tscn" id="2_axgl1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_laa5t"]
