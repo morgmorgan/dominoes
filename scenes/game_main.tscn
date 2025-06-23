@@ -1,10 +1,102 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm7o5xuhmaao2"]
+[gd_scene load_steps=13 format=3 uid="uid://bm7o5xuhmaao2"]
 
 [ext_resource type="PackedScene" uid="uid://drigcgcpl6n0r" path="res://scenes/main.tscn" id="1_1fdw3"]
+[ext_resource type="PackedScene" uid="uid://bp21h7jfrfep1" path="res://scenes/main_menu_bg.tscn" id="1_ococy"]
+[ext_resource type="Script" path="res://scripts/game_main.gd" id="1_yeyxx"]
 [ext_resource type="PackedScene" uid="uid://e0uxvuht500i" path="res://scenes/main_ui.tscn" id="2_ed82w"]
+[ext_resource type="Script" path="res://scripts/level_loader.gd" id="2_epou5"]
+[ext_resource type="PackedScene" uid="uid://dcrr1pxy4vgh1" path="res://scenes/levels_menu.tscn" id="3_d7dfp"]
+[ext_resource type="PackedScene" uid="uid://cko0m67lb26c8" path="res://scenes/instruction_menu.tscn" id="4_o3ems"]
+[ext_resource type="PackedScene" uid="uid://c0pi1kwpiy6mi" path="res://scenes/options_menu.tscn" id="5_epjgi"]
+
+[sub_resource type="Animation" id="Animation_mlft4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ccirt"]
+resource_name = "load_fade_in"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t74oe"]
+resource_name = "load_fade_out"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_or5y3"]
+_data = {
+"RESET": SubResource("Animation_mlft4"),
+"load_fade_in": SubResource("Animation_ccirt"),
+"load_fade_out": SubResource("Animation_t74oe")
+}
 
 [node name="gameMain" type="Node"]
+script = ExtResource("1_yeyxx")
 
-[node name="Node3D" parent="." instance=ExtResource("1_1fdw3")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_or5y3")
+}
 
-[node name="mainUI" parent="." instance=ExtResource("2_ed82w")]
+[node name="levelLoader" type="Node" parent="."]
+script = ExtResource("2_epou5")
+levels = Array[PackedScene]([ExtResource("1_ococy"), ExtResource("1_1fdw3")])
+
+[node name="mainMenuBg" parent="levelLoader" instance=ExtResource("1_ococy")]
+
+[node name="mainMenu" parent="." instance=ExtResource("2_ed82w")]
+
+[node name="levelsMenu" parent="." instance=ExtResource("3_d7dfp")]
+visible = false
+
+[node name="instructionMenu" parent="." instance=ExtResource("4_o3ems")]
+visible = false
+
+[node name="optionsMenu" parent="." instance=ExtResource("5_epjgi")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

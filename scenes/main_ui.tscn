@@ -1,3 +1,133 @@
-[gd_scene format=3 uid="uid://e0uxvuht500i"]
+[gd_scene load_steps=5 format=3 uid="uid://e0uxvuht500i"]
 
-[node name="mainUI" type="CanvasLayer"]
+[ext_resource type="Script" path="res://scripts/main_ui.gd" id="1_1bpou"]
+[ext_resource type="Texture2D" uid="uid://b5h8ofbfo1ib1" path="res://assets/UI assets/help_background.png" id="1_bwpks"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3yfj"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_bwpks")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2omq"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_bwpks")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+modulate_color = Color(0.386251, 0.386251, 0.386251, 1)
+
+[node name="mainMenu" type="CanvasLayer"]
+script = ExtResource("1_1bpou")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 64
+text = "Crazy Dominoes"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 24
+text = "A submission to PIGsquad's June 2025 Summer Slow Jam"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_o3yfj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="levelsButton" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_o3yfj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d2omq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o3yfj")
+text = "Levels"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="instructionButton" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_o3yfj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d2omq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o3yfj")
+text = "How to Play"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="optionsButton" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_o3yfj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d2omq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o3yfj")
+text = "Options"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="quitButton" type="Button" parent="MarginContainer2/PanelContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_o3yfj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d2omq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o3yfj")
+text = "Quit"
