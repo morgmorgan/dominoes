@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0mjohwcsb1r3"]
+
+[ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="1_0musv"]
+[ext_resource type="Script" path="res://scenes/falling_domino.gd" id="1_uk4b5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bwu0s"]
+size = Vector3(0.5, 4, 2)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_uk4b5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_bwu0s")
+
+[node name="basic_domino" parent="." instance=ExtResource("1_0musv")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
