@@ -15,7 +15,6 @@ func _ready() -> void:
 	MouseWheelTracker.spawn_domino.connect(spawn_domino)
 	MouseWheelTracker.spawn_changed.connect(show_ghost)
 	MouseWheelTracker.remove_domino.connect(remove_domino)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,6 +36,9 @@ func _process(delta: float) -> void:
 		MouseWheelTracker.clear_spawn()
 		
 func spawn_domino():#, spawn_angle: float):
+	if not MouseWheelTracker.active:
+		return
+	
 	if dominos.has(MouseWheelTracker.currrent_spawn):
 		return
 		
@@ -50,6 +52,9 @@ func spawn_domino():#, spawn_angle: float):
 	%dominoPlaceSFX.play()
 
 func remove_domino():
+	if not MouseWheelTracker.active:
+		return
+	
 	if dominos.has(MouseWheelTracker.currrent_spawn):
 		remove_child(dominos.get(MouseWheelTracker.currrent_spawn))
 		dominos.erase(MouseWheelTracker.currrent_spawn)
@@ -62,11 +67,11 @@ func remove_ghost():
 		ghost = null
 
 func show_ghost():
-	if dominos.has(MouseWheelTracker.currrent_spawn) or not MouseWheelTracker.active:
-		return
-		
 	remove_ghost()
 	
+	if dominos.has(MouseWheelTracker.currrent_spawn) or not MouseWheelTracker.active:
+		return
+
 	var new_ghost : Node3D = GHOST_DOMINO_SCENE.instantiate()
 	new_ghost.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_ghost.position = MouseWheelTracker.currrent_spawn
