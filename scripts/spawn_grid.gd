@@ -47,7 +47,7 @@ func spawn_domino():#, spawn_angle: float):
 	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_domino.position = MouseWheelTracker.currrent_spawn
 	dominos[MouseWheelTracker.currrent_spawn] = new_domino
-	add_child(new_domino, true)
+	add_sibling(new_domino, true)
 	%dominoPlaceSFX.position = MouseWheelTracker.currrent_spawn
 	%dominoPlaceSFX.play()
 
@@ -56,14 +56,14 @@ func remove_domino():
 		return
 	
 	if dominos.has(MouseWheelTracker.currrent_spawn):
-		remove_child(dominos.get(MouseWheelTracker.currrent_spawn))
+		get_parent().remove_child(dominos.get(MouseWheelTracker.currrent_spawn))
 		dominos.erase(MouseWheelTracker.currrent_spawn)
 	else:
 		print("tried removing a domino that wasnt placed")
 	
 func remove_ghost():
 	if ghost != null:
-		remove_child(ghost)
+		get_parent().remove_child(ghost)
 		ghost = null
 
 func show_ghost():
@@ -76,4 +76,4 @@ func show_ghost():
 	new_ghost.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_ghost.position = MouseWheelTracker.currrent_spawn
 	ghost = new_ghost
-	add_child(new_ghost, true)
+	add_sibling(new_ghost, true)

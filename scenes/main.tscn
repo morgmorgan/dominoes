@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drigcgcpl6n0r"]
+[gd_scene load_steps=9 format=3 uid="uid://drigcgcpl6n0r"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jay6m"]
 [ext_resource type="Texture2D" uid="uid://diibw5s4bj0w" path="res://assets/Background.png" id="2_fa2ko"]
@@ -7,6 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://72a0n5b0cbl7" path="res://resources/mesh_lib.tres" id="6_8fy5r"]
 [ext_resource type="Script" path="res://scripts/spawn_grid.gd" id="6_muy7s"]
 [ext_resource type="AudioStream" uid="uid://cor80jetkn0sx" path="res://assets/dieThrow2.ogg" id="7_1j7v6"]
+[ext_resource type="PackedScene" uid="uid://bwl781ba7ljj3" path="res://scenes/domino.tscn" id="8_moqdq"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jay6m")
@@ -33,6 +34,7 @@ size = 21.9598
 stream = ExtResource("4_62hxr")
 
 [node name="spawnGrid" type="GridMap" parent="."]
+visible = false
 mesh_library = ExtResource("6_8fy5r")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
@@ -58,3 +60,6 @@ data = {
 unique_name_in_owner = true
 stream = ExtResource("7_1j7v6")
 bus = &"DominoPlace"
+
+[node name="domino" parent="." instance=ExtResource("8_moqdq")]
+start_domino = true
