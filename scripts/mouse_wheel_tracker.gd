@@ -35,7 +35,6 @@ func _process(delta: float) -> void:
 # just rename this singleton to "EventManager" or something
 func update_spawn(position: Vector3):
 	if position != currrent_spawn or not active:
-		print("updated")
 		currrent_spawn = position
 		active = true
 		spawn_changed.emit()
