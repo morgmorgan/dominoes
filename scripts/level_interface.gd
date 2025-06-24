@@ -22,3 +22,12 @@ func _ready():
 
 func toggle_help_panel(toggled_on : bool):
 	$helpContainer.visible = toggled_on
+
+func update_normal_count(count : int):
+	%normalDominoCountLabel.text = str(count)
+	
+func update_heavy_count(count : int):
+	%heavyDominoCountLabel.text = str(count)
+	
+func update_jumping_count(count : int):
+	%jumpingDominoCountLabel.text = str(count)

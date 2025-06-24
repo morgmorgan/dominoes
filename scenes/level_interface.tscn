@@ -141,7 +141,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Normal Domino Container/HBoxContainer/MarginContainer2"]
+[node name="normalDominoCountLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Normal Domino Container/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
@@ -185,7 +186,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Heavy Domino Container2/HBoxContainer/MarginContainer2"]
+[node name="heavyDominoCountLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Heavy Domino Container2/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
@@ -229,7 +231,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Jumping Domino Container3/HBoxContainer/MarginContainer2"]
+[node name="jumpingDominoCountLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/Jumping Domino Container3/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
