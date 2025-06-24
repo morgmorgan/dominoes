@@ -17,6 +17,8 @@ func _ready():
 	
 	instruction_menu.menuButton_pressed.connect(show_main_menu)
 	
+	$levelLoader.parent_load_level.connect(load_level)
+	
 func load_level(level_index : int):
 	if level_index == 0:
 		show_main_menu()

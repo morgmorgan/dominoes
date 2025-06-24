@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bm7o5xuhmaao2"]
 
-[ext_resource type="PackedScene" uid="uid://drigcgcpl6n0r" path="res://scenes/main.tscn" id="1_1fdw3"]
-[ext_resource type="PackedScene" uid="uid://bp21h7jfrfep1" path="res://scenes/main_menu_bg.tscn" id="1_ococy"]
 [ext_resource type="Script" path="res://scripts/game_main.gd" id="1_yeyxx"]
 [ext_resource type="PackedScene" uid="uid://e0uxvuht500i" path="res://scenes/main_ui.tscn" id="2_ed82w"]
 [ext_resource type="Script" path="res://scripts/level_loader.gd" id="2_epou5"]
 [ext_resource type="PackedScene" uid="uid://dcrr1pxy4vgh1" path="res://scenes/levels_menu.tscn" id="3_d7dfp"]
+[ext_resource type="PackedScene" uid="uid://caltf7juqyblr" path="res://scenes/levels/level_0.tscn" id="3_pn56l"]
+[ext_resource type="PackedScene" uid="uid://bwr510f14gawd" path="res://scenes/levels/secretlevel_1.tscn" id="4_2mwda"]
 [ext_resource type="PackedScene" uid="uid://cko0m67lb26c8" path="res://scenes/instruction_menu.tscn" id="4_o3ems"]
 [ext_resource type="PackedScene" uid="uid://c0pi1kwpiy6mi" path="res://scenes/options_menu.tscn" id="5_epjgi"]
 
@@ -75,9 +75,9 @@ libraries = {
 
 [node name="levelLoader" type="Node" parent="."]
 script = ExtResource("2_epou5")
-levels = Array[PackedScene]([ExtResource("1_ococy"), ExtResource("1_1fdw3")])
+levels = Array[PackedScene]([ExtResource("3_pn56l"), ExtResource("4_2mwda")])
 
-[node name="mainMenuBg" parent="levelLoader" instance=ExtResource("1_ococy")]
+[node name="level0" parent="levelLoader" instance=ExtResource("3_pn56l")]
 
 [node name="mainMenu" parent="." instance=ExtResource("2_ed82w")]
 

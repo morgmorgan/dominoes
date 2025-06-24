@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c72gqv65bj0w2"]
+[gd_scene load_steps=21 format=3 uid="uid://c72gqv65bj0w2"]
 
 [ext_resource type="Script" path="res://scripts/level_interface.gd" id="1_47joq"]
 [ext_resource type="Texture2D" uid="uid://b5h8ofbfo1ib1" path="res://assets/UI assets/help_background.png" id="1_dppv8"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cs838t14gb7pg" path="res://assets/UI assets/jumping_domino_inventory.png" id="4_dcvl1"]
 [ext_resource type="Texture2D" uid="uid://dpklmuiiffalo" path="res://assets/UI assets/help_button.png" id="5_mswf8"]
 [ext_resource type="Texture2D" uid="uid://p8v34f2hcfqs" path="res://assets/UI assets/mouse_icon.png" id="7_tfe8x"]
+[ext_resource type="Texture2D" uid="uid://ci2x2x5rywm04" path="res://assets/UI assets/exit_button.png" id="8_fkluo"]
+[ext_resource type="Texture2D" uid="uid://chopq6wk26b1q" path="res://assets/UI assets/play_button.png" id="9_gx0b8"]
+[ext_resource type="Texture2D" uid="uid://crhmhhmb4gy2q" path="res://assets/UI assets/reset_button.png" id="10_yaxxg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igoni"]
 content_margin_left = 8.0
@@ -34,6 +37,45 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_me2yw"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_dppv8")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_84hfc"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_dppv8")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+modulate_color = Color(0.386251, 0.386251, 0.386251, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wil7"]
+atlas = ExtResource("9_gx0b8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpgmg"]
+atlas = ExtResource("9_gx0b8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyhka"]
+atlas = ExtResource("10_yaxxg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88pqf"]
+atlas = ExtResource("10_yaxxg")
+region = Rect2(0, 32, 32, 32)
 
 [node name="levelInterface" type="CanvasLayer"]
 script = ExtResource("1_47joq")
@@ -339,3 +381,57 @@ custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
 texture = ExtResource("7_tfe8x")
 expand_mode = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="menuButton" type="Button" parent="MarginContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_me2yw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_84hfc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_me2yw")
+icon = ExtResource("8_fkluo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer4"]
+layout_mode = 2
+
+[node name="playButton" type="TextureButton" parent="MarginContainer4/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_1wil7")
+texture_pressed = SubResource("AtlasTexture_kpgmg")
+stretch_mode = 5
+
+[node name="resetButton" type="TextureButton" parent="MarginContainer4/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_oyhka")
+texture_pressed = SubResource("AtlasTexture_88pqf")
+stretch_mode = 5
