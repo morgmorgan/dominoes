@@ -10,7 +10,7 @@
 script = ExtResource("1_q0bax")
 
 [node name="nice_rounded_cube" parent="." instance=ExtResource("1_kxleh")]
-transform = Transform3D(1.714, 0, 0, 0, 1.714, 0, 0, 0, 1.714, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="button" parent="." instance=ExtResource("2_axgl1")]
 

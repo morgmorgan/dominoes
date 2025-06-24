@@ -66,6 +66,6 @@ bus = &"DominoPlace"
 start_domino = true
 
 [node name="buttonTile" parent="." instance=ExtResource("9_purkn")]
-transform = Transform3D(0.93, 0, 0, 0, 0.93, 0, 0, 0, 0.93, 6, 0, 8.8571)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 6, 0, 9)
 
 [connection signal="button_changed" from="buttonTile" to="." method="_on_win_tile_button_changed"]
