@@ -85,25 +85,15 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 0, 0)
 metadata/_edit_group_ = true
 
-[node name="RigidBody3D" type="RigidBody3D" parent="physics"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
-input_ray_pickable = false
-gravity_scale = 0.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("BoxShape3D_sdo0x")
-
-[node name="Area3D" type="Area3D" parent="physics/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-input_ray_pickable = false
+[node name="Area3D" type="Area3D" parent="physics"]
 script = ExtResource("2_a8nhh")
-metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="physics/RigidBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="physics/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2, 0)
 shape = SubResource("BoxShape3D_sdo0x")
 
-[node name="basic_domino" parent="physics/RigidBody3D" instance=ExtResource("3_q8o4t")]
+[node name="basic_domino" parent="physics/Area3D" instance=ExtResource("3_q8o4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -115,5 +105,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 stream = SubResource("AudioStreamRandomizer_b3n4v")
 bus = &"SFX"
 
-[connection signal="area_shape_entered" from="physics/RigidBody3D/Area3D" to="." method="_on_domino_area_entered"]
+[connection signal="area_shape_entered" from="physics/Area3D" to="." method="_on_domino_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_anim_end"]

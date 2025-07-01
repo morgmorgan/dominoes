@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 
 func get_collidable_parent_node() -> Node3D:
 	print("Getting Parent")
-	print(get_parent().get_parent().get_parent().name)
-	return get_parent().get_parent().get_parent()
+	print(get_parent().get_parent().name)
+	return get_parent().get_parent()
 
 func get_collidable_type() -> CollidableType:
 	return CollidableType.DOMINO

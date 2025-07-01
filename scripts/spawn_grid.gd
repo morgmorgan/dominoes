@@ -24,13 +24,11 @@ func _process(delta: float) -> void:
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = from
-	ray_query.to = to
+	var ray_query = PhysicsRayQueryParameters3D.create(from, to)
 	ray_query.collide_with_areas = true
 	
 	var raycast_result = space.intersect_ray(ray_query)
-	if raycast_result.has("position"):
+	if raycast_result.has("position") and not (raycast_result["collider"] is Collidable and (raycast_result["collider"] as Collidable).get_collidable_type() == Collidable.CollidableType.DOMINO):
 		MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
 	else:
 		MouseWheelTracker.clear_spawn()

@@ -66,6 +66,7 @@ bus = &"DominoPlace"
 
 [node name="domino" parent="." instance=ExtResource("8_8rtq8")]
 start_domino = true
+type = 0
 
 [node name="buttonTile" parent="." instance=ExtResource("9_dk7tk")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 6, 0, 9)
