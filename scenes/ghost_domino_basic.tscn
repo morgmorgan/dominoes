@@ -2,13 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bq4ggpff1r7kb" path="res://assets/basic_domino.glb" id="1_48i06"]
 [ext_resource type="PackedScene" uid="uid://c2ly5xygvylk8" path="res://scenes/arrow_model.tscn" id="2_0a51m"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7815"]
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.215686, 1, 1, 0.188235)
-emission = Color(0, 1, 1, 1)
-emission_energy_multiplier = 18.5
+[ext_resource type="Material" uid="uid://bs4co7rx52ryj" path="res://resources/ghost_domino_basic.tres" id="2_exdvn"]
 
 [sub_resource type="Animation" id="Animation_8pel4"]
 length = 0.001
@@ -74,7 +68,7 @@ _data = {
 [node name="ghostDominoBasic" instance=ExtResource("1_48i06")]
 
 [node name="Cube" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_d7815")
+surface_material_override/0 = ExtResource("2_exdvn")
 
 [node name="ArrowModel" parent="." index="1" instance=ExtResource("2_0a51m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
