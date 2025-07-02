@@ -38,4 +38,4 @@ func refresh_level():
 	add_child(active_level)
 	
 func play_level():
-	Input.action_press("levelStart")
+	active_level.play_level()

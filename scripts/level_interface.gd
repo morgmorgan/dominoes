@@ -9,9 +9,11 @@ func emit_menuButton():
 	
 func emit_playButton():
 	playButton_pressed.emit()
+	%playButton.release_focus()
 	
 func emit_resetButton():
 	refreshButton_pressed.emit()
+	%resetButton.release_focus()
 
 func _ready():
 	$helpContainer.visible = false
