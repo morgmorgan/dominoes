@@ -29,9 +29,11 @@ func _process(delta: float) -> void:
 	
 	var raycast_result = space.intersect_ray(ray_query)
 	if raycast_result.has("position") and not (raycast_result["collider"] is Collidable and (raycast_result["collider"] as Collidable).get_collidable_type() == Collidable.CollidableType.DOMINO):
-		MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
-	else:
-		MouseWheelTracker.clear_spawn()
+		if get_cell_item($".".map_to_local(raycast_result["position"])) == 0:
+			MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
+			return 
+	
+	MouseWheelTracker.clear_spawn()
 		
 func spawn_domino():#, spawn_angle: float):
 	if not MouseWheelTracker.active:
