@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="domoinoes"
+config/name="dominoes"
 run/main_scene="res://scenes/game_main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -22,7 +22,7 @@ BgmPlayer="*res://scenes/bgm_player.tscn"
 
 [dotnet]
 
-project/assembly_name="domoinoes"
+project/assembly_name="dominoes"
 
 [global_group]
 
