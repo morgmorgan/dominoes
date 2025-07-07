@@ -139,7 +139,7 @@ physics_material_override = SubResource("PhysicsMaterial_3d8mv")
 shape = SubResource("BoxShape3D_m8b12")
 
 [node name="buttonTile" parent="solids/RigidBody3D6" instance=ExtResource("6_i6o6l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 1.75, 0)
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="solids"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -18.25, -10)
