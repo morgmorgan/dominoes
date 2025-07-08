@@ -4,7 +4,7 @@ extends Node3D
 @export var start_domino:bool = false
 @export var type: DominoType = DominoType.GENERIC
 
-enum DominoType {GENERIC, HEAVY}
+enum DominoType {GENERIC, HEAVY, JUMPING}
 
 var already_tipped = false
 var how_many_collided_with_me = 0

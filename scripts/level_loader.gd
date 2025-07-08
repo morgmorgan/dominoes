@@ -17,6 +17,7 @@ func load_level(level_index : int):
 	var new_level = levels[level_index].instantiate()
 	active_level = new_level
 	active_level.menuButton_pressed.connect(request_level.bind(0))
+	ActiveLevelTracker.update_level(level_index, active_level)
 	add_child(active_level)
 
 func request_level(level_id : int):

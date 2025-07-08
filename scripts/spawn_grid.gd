@@ -49,6 +49,11 @@ func spawn_domino():#, spawn_angle: float):
 	if dominos.has(MouseWheelTracker.currrent_spawn):
 		return
 		
+	if ActiveLevelTracker.current_index != 0:
+			var level: baseLevel = ActiveLevelTracker.current_level
+			if not level.check_normal():
+				return
+		
 	var new_domino : Domino = DOMINO_SCENE.instantiate()
 	new_domino.type = type
 	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
@@ -64,6 +69,7 @@ func remove_domino():
 	
 	var pos = dominos.find_key(MouseWheelTracker.current_domino)
 	if pos != null:
+		MouseWheelTracker.current_domino.queue_free()
 		get_parent().remove_child(MouseWheelTracker.current_domino)
 		dominos.erase(pos)
 	else:
@@ -71,6 +77,7 @@ func remove_domino():
 	
 func remove_ghost():
 	if ghost != null:
+		ghost.queue_free()
 		get_parent().remove_child(ghost)
 		ghost = null
 

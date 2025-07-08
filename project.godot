@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 MouseWheelTracker="*res://scripts/mouse_wheel_tracker.gd"
 BgmPlayer="*res://scenes/bgm_player.tscn"
+ActiveLevelTracker="*res://active_level_tracker.gd"
 
 [dotnet]
 

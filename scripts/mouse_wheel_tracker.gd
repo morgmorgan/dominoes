@@ -40,10 +40,10 @@ func update_spawn(position: Vector3):
 		currrent_spawn = position
 		active = true
 		spawn_changed.emit()
-		
-		
+				
 func update_domino(domino: Domino):
 	current_domino = domino
+	
 func clear_domino():
 	current_domino = null
 		
