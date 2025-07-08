@@ -11,6 +11,8 @@ var spawn_angle : int = 0
 var currrent_spawn: Vector3
 var active = false
 
+var current_domino: Domino
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("MouseWheelUp"):
 		if spawn_angle < 180:
@@ -38,6 +40,12 @@ func update_spawn(position: Vector3):
 		currrent_spawn = position
 		active = true
 		spawn_changed.emit()
+		
+		
+func update_domino(domino: Domino):
+	current_domino = domino
+func clear_domino():
+	current_domino = null
 		
 func clear_spawn():
 	if active: 

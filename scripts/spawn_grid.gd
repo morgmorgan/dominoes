@@ -32,8 +32,15 @@ func _process(delta: float) -> void:
 		if get_cell_item($".".map_to_local(raycast_result["position"])) == 0:
 			MouseWheelTracker.update_spawn($".".map_to_local(raycast_result["position"]))
 			return 
-	
+			
 	MouseWheelTracker.clear_spawn()
+	
+	if raycast_result.has("position") and (raycast_result["collider"] is Collidable and (raycast_result["collider"] as Collidable).get_collidable_type() == Collidable.CollidableType.DOMINO):
+		var domino = (raycast_result["collider"] as Collidable).get_collidable_parent_node()
+		MouseWheelTracker.update_domino(domino)
+	else:
+		MouseWheelTracker.clear_domino()	
+	
 		
 func spawn_domino():#, spawn_angle: float):
 	if not MouseWheelTracker.active:
@@ -52,12 +59,13 @@ func spawn_domino():#, spawn_angle: float):
 	%dominoPlaceSFX.play()
 
 func remove_domino():
-	if not MouseWheelTracker.active:
+	if MouseWheelTracker.current_domino == null:
 		return
 	
-	if dominos.has(MouseWheelTracker.currrent_spawn):
-		get_parent().remove_child(dominos.get(MouseWheelTracker.currrent_spawn))
-		dominos.erase(MouseWheelTracker.currrent_spawn)
+	var pos = dominos.find_key(MouseWheelTracker.current_domino)
+	if pos != null:
+		get_parent().remove_child(MouseWheelTracker.current_domino)
+		dominos.erase(pos)
 	else:
 		print("tried removing a domino that wasnt placed")
 	
