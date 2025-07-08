@@ -10,6 +10,7 @@ signal remove_domino
 var spawn_angle : int = 0
 var currrent_spawn: Vector3
 var active = false
+var current_type: Domino.DominoType = Domino.DominoType.GENERIC
 
 var current_domino: Domino
 
@@ -24,6 +25,13 @@ func _process(delta: float) -> void:
 			spawn_angle -= ANGLE_INCREMENT
 			spawn_angle_changed.emit()
 			#print_debug(spawn_angle)
+	if Input.is_action_just_pressed("MouseWheelClick"):
+		if current_type == Domino.DominoType.GENERIC:
+			current_type = Domino.DominoType.HEAVY
+		elif current_type == Domino.DominoType.HEAVY:
+			current_type = Domino.DominoType.JUMPING
+		elif current_type == Domino.DominoType.JUMPING:
+			current_type = Domino.DominoType.GENERIC
 	if Input.is_action_just_pressed("LeftMouseClick"):
 		spawn_domino.emit()
 	if Input.is_action_just_pressed("RightMouseClick"):

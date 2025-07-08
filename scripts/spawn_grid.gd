@@ -4,7 +4,6 @@ const GHOST_DOMINO_SCENE : PackedScene = preload("res://scenes/ghost_domino_basi
 const DOMINO_SCENE : PackedScene = preload("res://scenes/domino.tscn")
 
 #TODO: DOMINO TYPE SHOULD BE SET FROM UI
-@export var type: Domino.DominoType = Domino.DominoType.GENERIC
 
 var dominos = {}
 var ghost
@@ -51,11 +50,19 @@ func spawn_domino():#, spawn_angle: float):
 		
 	if ActiveLevelTracker.current_index != 0:
 			var level: baseLevel = ActiveLevelTracker.current_level
-			if not level.check_normal():
-				return
+			match MouseWheelTracker.current_type:
+				Domino.DominoType.GENERIC:
+					if not level.check_normal():
+						return
+				Domino.DominoType.HEAVY:
+					if not level.check_heavy():
+						return
+				Domino.DominoType.JUMPING:
+					if not level.check_jumping():
+						return
 		
 	var new_domino : Domino = DOMINO_SCENE.instantiate()
-	new_domino.type = type
+	new_domino.type = MouseWheelTracker.current_type
 	new_domino.rotation_degrees = Vector3(0, MouseWheelTracker.spawn_angle, 0)
 	new_domino.position = MouseWheelTracker.currrent_spawn
 	dominos[MouseWheelTracker.currrent_spawn] = new_domino
@@ -69,6 +76,10 @@ func remove_domino():
 	
 	var pos = dominos.find_key(MouseWheelTracker.current_domino)
 	if pos != null:
+		if ActiveLevelTracker.current_index != 0:
+			var level: baseLevel = ActiveLevelTracker.current_level
+			level.restore_domino(MouseWheelTracker.current_domino.type)
+		
 		MouseWheelTracker.current_domino.queue_free()
 		get_parent().remove_child(MouseWheelTracker.current_domino)
 		dominos.erase(pos)
